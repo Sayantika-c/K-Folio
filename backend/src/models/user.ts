@@ -2,6 +2,9 @@ import { Schema, model, models, InferSchemaType } from "mongoose";
 
 const userSchema = new Schema(
   {
+    // handles mongodb schema and type validation
+
+    // unique user handle
     user_handle: {
       type: String,
       required: true,
@@ -9,6 +12,8 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
     },
+
+    // Real name of the user
     username: {
       type: String,
       required: true,
