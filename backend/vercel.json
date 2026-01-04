@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "buildCommand": "echo 'Build already done by CI/CD'",
+  "outputDirectory": "dist",
   "builds": [
     {
       "src": "dist/index.js",
