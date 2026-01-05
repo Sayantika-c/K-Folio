@@ -3,12 +3,11 @@ import Footer from "../../components/Landing Page/Footer";
 import Hero from "../../components/Landing Page/Hero";
 import LandingBackground from "../../components/Landing Page/LandingBackground";
 import WhyKfolio from "../../components/Landing Page/whyKfolio";
+import Navbar from "../../components/Landing Page/navbar";
 
 // LandingPage
-// Orchestrates the landing page layout. Uses an IntersectionObserver to
-// detect which `section[data-section]` is most visible and writes the
-// active key into state. That `active` value is passed to the background
-// (and optionally footer) so styles can react to scrolling.
+// Orchestrates the landing page layout and tracks
+// which section is currently visible for background effects.
 export default function LandingPage() {
   const [active, setActive] = useState<string>("hero");
 
@@ -16,6 +15,7 @@ export default function LandingPage() {
     const sections = Array.from(
       document.querySelectorAll("section[data-section]")
     ) as HTMLElement[];
+
     if (!sections.length) return;
 
     const observer = new IntersectionObserver(
@@ -23,23 +23,33 @@ export default function LandingPage() {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
         if (visible?.target) {
           const name = visible.target.getAttribute("data-section");
           if (name) setActive(name);
         }
       },
-      { threshold: [0.45, 0.6, 0.8] }
+      {
+        threshold: [0.45, 0.6, 0.8],
+      }
     );
 
-    sections.forEach((s) => observer.observe(s));
+    sections.forEach((section) => observer.observe(section));
+
     return () => observer.disconnect();
   }, []);
 
   return (
     <>
       <LandingBackground activeSection={active}>
-        <Hero />
-        <WhyKfolio />
+        {/* Sticky navbar */}
+        <Navbar />
+
+        {/* Offset content for fixed navbar */}
+        <div style={{ paddingTop: "7rem" }}>
+          <Hero />
+          <WhyKfolio />
+        </div>
       </LandingBackground>
 
       <Footer activeSection={active} />
