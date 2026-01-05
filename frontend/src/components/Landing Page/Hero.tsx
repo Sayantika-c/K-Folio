@@ -1,133 +1,218 @@
 export default function Hero() {
-// Hero
-// Top-most landing section. Contains headline and short description. Exposes
-// `data-section="hero"` for page visibility tracking so background/theme can
-// react to user scroll position.
-  {
-    /* Animation definition (must exist once) */
-  }
-  <style>
-    {`
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-    `}
-  </style>;
   return (
-    <section
-      style={{
-        position: "relative",
-        minHeight: "80vh",
-        padding: "30px 50px",
-        display: "grid",
-        gridTemplateColumns: "1.1fr 1fr",
-        alignItems: "center",
-        overflow: "hidden",
-        color: "white",
-      }}
-    >
-      {/* Left content */}
-      <div
+    <>
+      <style>
+        {`
+        :root {
+          --hero-ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* =====================
+           BASE FADE + LIFE
+           ===================== */
+        .hero-animate {
+          opacity: 0;
+          transform: translateY(14px);
+          animation:
+            heroFadeUp 0.9s var(--hero-ease) forwards,
+            heroFloat 6s ease-in-out infinite;
+        }
+
+        .hero-line-1 { animation-delay: 0.12s; }
+        .hero-line-2 { animation-delay: 0.24s; }
+        .hero-glow   { animation-delay: 0.36s; }
+
+        .hero-paragraph { animation-delay: 0.5s; }
+        .hero-cta { animation-delay: 0.65s; }
+
+        @keyframes heroFadeUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Gentle breathing motion */
+        @keyframes heroFloat {
+          0%,100% { transform: translateY(0); }
+          50% { transform: translateY(-3px); }
+        }
+
+        /* =====================
+           SHIMMER TEXT (LIVELY)
+           ===================== */
+        .hero-shimmer {
+          background: linear-gradient(
+            90deg,
+            #3f56c8,
+            #6b82ff,
+            #3f56c8
+          );
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+
+          animation:
+            heroFadeUp 0.9s var(--hero-ease) forwards,
+            shimmerMove 5.5s ease-in-out infinite,
+            glowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmerMove {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        @keyframes glowPulse {
+          0%,100% {
+            text-shadow:
+              0 0 6px rgba(63,86,200,0.35),
+              0 0 14px rgba(63,86,200,0.2);
+          }
+          50% {
+            text-shadow:
+              0 0 14px rgba(63,86,200,0.55),
+              0 0 32px rgba(63,86,200,0.35);
+          }
+        }
+
+        /* =====================
+           BUTTON
+           ===================== */
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+
+        .hero-button-inner {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-cta:hover .hero-button-inner {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 40px rgba(99,102,241,0.45);
+        }
+
+        /* =====================
+           VIDEO
+           ===================== */
+        .hero-video-wrapper {
+          width: 600px;
+          height: 350px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          animation: videoFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes videoFloat {
+          0%,100% {
+            transform: translateY(0) scale(1);
+          }
+          50% {
+            transform: translateY(-6px) scale(1.015);
+          }
+        }
+
+        .hero-video {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+
+          mask-image: radial-gradient(
+            ellipse at center,
+            black 55%,
+            transparent 75%
+          );
+          -webkit-mask-image: radial-gradient(
+            ellipse at center,
+            black 55%,
+            transparent 75%
+          );
+
+          filter: drop-shadow(0 20px 60px rgba(59,130,246,0.25));
+        }
+        `}
+      </style>
+
+      <section
+        data-section="hero"
         style={{
-          position: "relative",
-          zIndex: 1,
-          maxWidth: "520px",
+          minHeight: "80vh",
+          padding: "30px 50px",
+          display: "grid",
+          gridTemplateColumns: "1.1fr 1fr",
+          alignItems: "center",
+          color: "white",
         }}
       >
-        <h1
-          style={{
-            fontSize: "50px",
-            fontWeight: 600,
-            lineHeight: 1.15,
-            marginBottom: "24px",
-          }}
-        >
-          See what’s happening <br />
-          on campus–from <br />
-          people who live it.
-        </h1>
+        {/* LEFT */}
+        <div style={{ maxWidth: "520px" }}>
+          <h1 style={{ fontSize: "50px", fontWeight: 600, lineHeight: 1.15 }}>
+            <span className="hero-animate hero-line-1">
+              See what’s happening
+            </span>
+            <br />
+            <span className="hero-animate hero-line-2">
+              on campus–from
+            </span>
+            <br />
+            <span className="hero-animate hero-glow hero-shimmer">
+              people who live it.
+            </span>
+          </h1>
 
-        <p
-          style={{
-            fontSize: "20px",
-            opacity: 0.75,
-            marginBottom: "36px",
-            maxWidth: "420px",
-          }}
-        >
-          A social platform for students to share their experiences, stories,
-          and moments from campus life.
-        </p>
-
-        <button
-          style={{
-            position: "relative",
-            display: "inline-flex",
-            height: "48px",
-            padding: "1px",
-            borderRadius: "999px",
-            overflow: "hidden",
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          {/* Animated gradient border */}
-          <span
+          <p
+            className="hero-animate hero-paragraph"
             style={{
-              position: "absolute",
-              inset: "-1000%",
-              background:
-                "conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #393BB2 50%, #E2CBFF 100%)",
-              animation: "spin 2s linear infinite",
-            }}
-          />
-
-          {/* Inner button */}
-          <span
-            style={{
-              position: "relative",
-              zIndex: 1,
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              height: "100%",
-              padding: "0 22px",
-              borderRadius: "999px",
-              background: "#030b2dff", // slate-950
-              color: "white",
-              fontSize: "14px",
-              fontWeight: 500,
-              backdropFilter: "blur(24px)",
+              fontSize: "20px",
+              color: "rgba(255,255,255,0.75)",
+              marginBottom: "36px",
             }}
           >
-            GET STARTED
-            <span style={{ fontSize: "16px", transform: "translateY(1px)" }}>
-              →
-            </span>
-          </span>
-        </button>
-      </div>
+            A social platform for students to share their experiences,
+            stories, and moments from campus life.
+          </p>
 
-      {/* Right illustration placeholder */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 1,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <img
-          src="/HeroSection.svg"
-          alt="Illustration"
-          style={{ width: "600px", height: "350px" }}
-        />
-      </div>
-    </section>
+          <button className="hero-animate hero-cta" style={{ position: "relative", padding: "1px", borderRadius: "999px", border: "none", background: "transparent", overflow: "hidden" }}>
+            <span
+              style={{
+                position: "absolute",
+                inset: "-1000%",
+                background: "conic-gradient(from 90deg, #E2CBFF, #393BB2, #E2CBFF)",
+                animation: "spin 2s linear infinite",
+              }}
+            />
+            <span
+              className="hero-button-inner"
+              style={{
+                position: "relative",
+                zIndex: 1,
+                padding: "0 22px",
+                height: "48px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                borderRadius: "999px",
+                background: "#030b2d",
+                color: "white",
+                backdropFilter: "blur(24px)",
+              }}
+            >
+              GET STARTED →
+            </span>
+          </button>
+        </div>
+
+        {/* RIGHT */}
+        <div className="hero-video-wrapper">
+          <video autoPlay loop muted playsInline className="hero-video">
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+    </>
   );
 }

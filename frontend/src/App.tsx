@@ -16,6 +16,7 @@ function App() {
       </nav>
 
       <Routes>
+        {/* Landing Page */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Background />} />
       </Routes>
