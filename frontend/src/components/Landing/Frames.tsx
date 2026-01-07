@@ -19,16 +19,16 @@ export default function Frames() {
     {
       text: "#OurCampus",
       font: "Montserrat",
-      weight: 600,
-      size: 32,
+      weight: 400,
+      size: 28,
       letterSpacing: "0.02em",
       opacity: 0.9
     },
     {
       text: "#SayItYourWay",
       font: "Montserrat",
-      weight: 600,
-      size: 32,
+      weight: 400,
+      size: 28,
       letterSpacing: "0.02em",
       opacity: 0.9
     },
@@ -44,16 +44,16 @@ export default function Frames() {
     {
       text: "#GLOWUP",
       font: "Montserrat",
-      weight: 400,
-      size: 26,
+      weight: 300,
+      size: 24,
       letterSpacing: "0.15em",
       opacity: 0.5
     },
     {
       text: "#maincharacter",
       font: "Montserrat",
-      weight: 400,
-      size: 28,
+      weight: 300,
+      size: 24,
       letterSpacing: "0.05em",
       opacity: 0.6,
       outline: true

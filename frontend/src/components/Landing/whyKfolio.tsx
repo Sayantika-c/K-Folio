@@ -49,7 +49,6 @@ export default function WhyKfolio() {
           }
         }
 
-
         .collage-item:hover {
           transform: scale(1.12) rotate(0deg);
           z-index: 10;
@@ -57,7 +56,7 @@ export default function WhyKfolio() {
         }
 
         /* =====================
-           IMAGE POSITIONS
+           IMAGE POSITIONS (Desktop)
            ===================== */
 
         /* Top-left (sports) */
@@ -121,12 +120,262 @@ export default function WhyKfolio() {
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
+
+        /* =====================
+           RESPONSIVE DESIGN
+           ===================== */
+
+        /* Tablet (max-width: 1023px) */
+        @media (max-width: 1023px) {
+          .why-section {
+            grid-template-columns: 1fr !important;
+            padding: 80px 40px !important;
+            gap: 50px !important;
+          }
+
+          .why-collage {
+            height: 350px;
+            order: 2;
+          }
+
+          .why-content {
+            order: 1;
+            max-width: 100% !important;
+            text-align: center;
+          }
+
+          .why-logo {
+            width: 300px !important;
+            height: auto !important;
+            max-width: 90% !important;
+            margin: 0 auto 20px !important;
+          }
+
+          .why-text {
+            font-size: 16px !important;
+            max-width: 500px;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
+          /* Adjust collage for tablet */
+          .item-1 {
+            width: 140px;
+            height: 105px;
+            top: 30px;
+            left: 10px;
+          }
+
+          .item-2 {
+            width: 220px;
+            height: 130px;
+            top: 0px;
+            left: 160px;
+          }
+
+          .item-3 {
+            width: 180px;
+            height: 230px;
+            top: 100px;
+            left: 130px;
+          }
+
+          .item-4 {
+            width: 140px;
+            height: 160px;
+            bottom: 0;
+            left: 280px;
+          }
+
+          .item-5 {
+            width: 140px;
+            height: 130px;
+            bottom: 0;
+            left: 50px;
+          }
+        }
+
+        /* Mobile (max-width: 767px) */
+        @media (max-width: 767px) {
+          .why-section {
+            padding: 60px 25px !important;
+            gap: 40px !important;
+            min-height: auto !important;
+          }
+
+          .why-collage {
+            height: 280px;
+          }
+
+          .why-logo {
+            width: 240px !important;
+          }
+
+          .why-text {
+            font-size: 15px !important;
+            margin-bottom: 30px !important;
+          }
+
+          .why-button {
+            width: 100% !important;
+            max-width: 280px;
+            justify-content: center;
+          }
+
+          /* Simplify collage for mobile */
+          .item-1 {
+            width: 100px;
+            height: 75px;
+            top: 20px;
+            left: 5px;
+          }
+
+          .item-2 {
+            width: 160px;
+            height: 95px;
+            top: 0px;
+            left: 115px;
+          }
+
+          .item-3 {
+            width: 130px;
+            height: 165px;
+            top: 90px;
+            left: 95px;
+          }
+
+          .item-4 {
+            width: 100px;
+            height: 120px;
+            bottom: 0;
+            left: 190px;
+          }
+
+          .item-5 {
+            width: 110px;
+            height: 100px;
+            bottom: 0;
+            left: 35px;
+          }
+        }
+
+        /* Extra small mobile (max-width: 480px) */
+        @media (max-width: 480px) {
+          .why-section {
+            padding: 50px 20px !important;
+          }
+
+          .why-collage {
+            height: 240px;
+          }
+
+          .why-logo {
+            width: 200px !important;
+          }
+
+          .why-text {
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+          }
+
+          /* Compact collage for small mobile */
+          .item-1 {
+            width: 85px;
+            height: 65px;
+            top: 15px;
+            left: 5px;
+          }
+
+          .item-2 {
+            width: 135px;
+            height: 80px;
+            top: 0px;
+            left: 95px;
+          }
+
+          .item-3 {
+            width: 110px;
+            height: 140px;
+            top: 75px;
+            left: 80px;
+          }
+
+          .item-4 {
+            width: 85px;
+            height: 100px;
+            bottom: 0;
+            left: 160px;
+          }
+
+          .item-5 {
+            width: 95px;
+            height: 85px;
+            bottom: 0;
+            left: 30px;
+          }
+        }
+
+        /* Extra extra small (max-width: 374px) */
+        @media (max-width: 374px) {
+          .why-section {
+            padding: 40px 15px !important;
+          }
+
+          .why-collage {
+            height: 200px;
+          }
+
+          .why-logo {
+            width: 180px !important;
+          }
+
+          .why-text {
+            font-size: 13px !important;
+          }
+
+          /* Minimal collage */
+          .item-1 {
+            width: 70px;
+            height: 55px;
+            top: 10px;
+            left: 5px;
+          }
+
+          .item-2 {
+            width: 110px;
+            height: 65px;
+            top: 0px;
+            left: 80px;
+          }
+
+          .item-3 {
+            width: 90px;
+            height: 115px;
+            top: 60px;
+            left: 65px;
+          }
+
+          .item-4 {
+            width: 70px;
+            height: 85px;
+            bottom: 0;
+            left: 130px;
+          }
+
+          .item-5 {
+            width: 80px;
+            height: 70px;
+            bottom: 0;
+            left: 25px;
+          }
+        }
       `}</style>
 
       <section
+        className="why-section"
         style={{
           position: "relative",
-          overflow: "hidden",                // 🔑 prevents footer overlap
+          overflow: "hidden",
           minHeight: "100vh",
           padding: "120px 100px",
           display: "grid",
@@ -161,14 +410,22 @@ export default function WhyKfolio() {
         </div>
 
         {/* RIGHT — Content */}
-        <div style={{ maxWidth: "520px", zIndex: 1 }}>
+        <div className="why-content" style={{ maxWidth: "520px", zIndex: 1 }}>
           <img
             src="/WhyKfolio.svg"
             alt="Why K-Folio"
-            style={{ width: "492px", height: "345px", marginBottom: "24px" }}
+            className="why-logo"
+            style={{ 
+              width: "492px", 
+              height: "auto",
+              maxWidth: "100%",
+              marginBottom: "24px",
+              display: "block"
+            }}
           />
 
           <p
+            className="why-text"
             style={{
               fontSize: "18px",
               color: "rgba(255,255,255,0.75)",
@@ -183,50 +440,49 @@ export default function WhyKfolio() {
 
           {/* Join Now Button with glowing animated border */}
           <button
-        style={{
-          position: "relative",
-          display: "inline-flex",
-          padding: "1px",
-          borderRadius: "999px",
-          background: "transparent",
-          border: "none",
-          cursor: "pointer",
-          overflow: "hidden",
-        }}
-      >
-        <span
-          style={{
-            position: "absolute",
-            inset: "-1000%",
-            background:
-              "conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #393BB2 50%, #E2CBFF 100%)",
-            animation: "spin 2s linear infinite",
-          }}
-        />
+            className="why-button"
+            style={{
+              position: "relative",
+              display: "inline-flex",
+              padding: "1px",
+              borderRadius: "999px",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              overflow: "hidden",
+            }}
+          >
+            <span
+              style={{
+                position: "absolute",
+                inset: "-1000%",
+                background:
+                  "conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #393BB2 50%, #E2CBFF 100%)",
+                animation: "spin 2s linear infinite",
+              }}
+            />
 
-        <span
-          style={{
-            position: "relative",
-            zIndex: 1,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "10px",
-            height: "48px",
-            padding: "0 22px",
-            borderRadius: "999px",
-            background: "#030b2d",
-            color: "white",
-            fontSize: "14px",
-            fontWeight: 500,
-            backdropFilter: "blur(24px)",
-          }}
-        >
-          Join Now!
-          <span style={{ fontSize: "16px", transform: "translateY(1px)" }}>→</span>
-        </span>
-      </button>
-
-
+            <span
+              style={{
+                position: "relative",
+                zIndex: 1,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                height: "48px",
+                padding: "0 22px",
+                borderRadius: "999px",
+                background: "#030b2d",
+                color: "white",
+                fontSize: "14px",
+                fontWeight: 500,
+                backdropFilter: "blur(24px)",
+              }}
+            >
+              Join Now!
+              <span style={{ fontSize: "16px", transform: "translateY(1px)" }}>→</span>
+            </span>
+          </button>
         </div>
       </section>
     </>

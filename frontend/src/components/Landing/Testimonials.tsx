@@ -20,7 +20,7 @@ export default function Testimonials() {
   return (
     <section className="testimonials-section">
       {/* CHANGE HERE: Added style={{ textAlign: "left" }} to move heading to left */}
-      <h2 className="section-title" style={{ textAlign: "left" }}>What Students Say About K-Folio</h2>
+      <h2 className="section-title">What Students Say About K-Folio</h2>
       <div className="testimonials-grid">
         {testimonials.map((t, i) => (
           <div key={i} className="testimonial-card">

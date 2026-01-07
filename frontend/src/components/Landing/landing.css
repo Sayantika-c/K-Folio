@@ -1,3 +1,6 @@
+/* Import Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
 /* SHARED */
 .section-title {
   color: white;
@@ -8,13 +11,10 @@
   letter-spacing: -0.5px;
 }
 
-/* Import Montserrat font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
-
 /* =================== FRAMES SECTION =================== */
 .frames-section {
   padding: 80px 0;
-  background: linear-gradient(180deg, #020617 0%, #0a0f2e 50%, #0a0f2e 100%);
+  background: transparent; /* Use common background */
   overflow: hidden;
   position: relative;
   min-height: 200px;
@@ -48,7 +48,7 @@
 .hashtag-inline {
   color: white;
   display: inline-block;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
   cursor: pointer;
   flex-shrink: 0;
   white-space: nowrap;
@@ -57,6 +57,7 @@
 .hashtag-inline:hover {
   transform: scale(1.1);
   color: #a78bfa;
+  font-weight: 800 !important;
 }
 
 /* Outline style for specific hashtags */
@@ -71,36 +72,16 @@
   text-stroke: 1.5px #a78bfa;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .frames-content {
-    gap: 40px;
-  }
-  
-  /* Scale down hashtag sizes for mobile */
-  .hashtag-inline {
-    font-size: 0.8em !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .frames-content {
-    gap: 30px;
-  }
-  
-  .hashtag-inline {
-    font-size: 0.7em !important;
-  }
+/* Underline for #AfterHours */
+.hashtag-underline {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1.5px;
 }
 /* =================== FEATURES SECTION =================== */
 .features-section {
   padding: 100px 60px;
-  background: radial-gradient(
-      circle at top,
-      rgba(139, 92, 246, 0.08),
-      transparent 60%
-    ),
-    linear-gradient(180deg, #0a0f2e 0%, #020617 50%, #020617 100%);
+  background: transparent; /* Use common background */
   text-align: center;
 }
 
@@ -200,7 +181,7 @@
 /* =================== TESTIMONIALS SECTION =================== */
 .testimonials-section {
   padding: 100px 60px;
-  background: linear-gradient(180deg, #020617, #0a0f2e);
+  background: transparent; /* Use common background */
   text-align: center;
 }
 
@@ -288,54 +269,192 @@
 }
 
 /* =================== RESPONSIVE DESIGN =================== */
-@media (max-width: 1200px) {
+
+/* Large Desktop (1200px+) - Default styles above */
+
+/* Tablet & Small Desktop (768px - 1199px) */
+@media (max-width: 1199px) {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
   
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  
+  .features-section,
+  .testimonials-section {
+    padding: 80px 40px;
   }
 }
 
-@media (max-width: 768px) {
-  .features-grid,
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
+  .section-title,
+  .features-heading,
+  .testimonials-section .section-title {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+  
+  .features-section,
+  .testimonials-section {
+    padding: 70px 30px;
+  }
+  
+  .frames-section {
+    padding: 60px 0;
+  }
+}
+
+/* Mobile & Small Tablet (max-width: 767px) */
+@media (max-width: 767px) {
+  /* Section titles */
+  .section-title,
+  .features-heading,
+  .testimonials-section .section-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  
+  /* Frames section */
+  .frames-section {
+    padding: 50px 0;
+  }
+  
+  .frames-content {
+    gap: 40px;
+    padding: 0 20px;
+  }
+  
+  .hashtag-inline {
+    font-size: 20px !important;
+  }
+  
+  /* Features section */
+  .features-section {
+    padding: 60px 20px;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .feature-card {
+    padding: 32px 20px;
+  }
+  
+  .feature-card h3 {
+    font-size: 18px;
+  }
+  
+  .feature-card p {
+    font-size: 14px;
+  }
+  
+  /* Testimonials section */
+  .testimonials-section {
+    padding: 60px 20px;
+  }
+  
   .testimonials-grid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
   
-  .features-heading,
-  .testimonials-section .section-title {
-    font-size: 36px;
+  .testimonial-card {
+    padding: 32px 24px;
   }
   
-  .hashtag-inline {
-    font-size: 24px;
+  .testimonial-text {
+    font-size: 15px;
+  }
+  
+  .quote-icon {
+    font-size: 48px;
+  }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .section-title,
+  .features-heading,
+  .testimonials-section .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .frames-section {
+    padding: 40px 0;
   }
   
   .frames-content {
     gap: 30px;
-  }
-  
-  .frames-section,
-  .features-section,
-  .testimonials-section {
-    padding: 80px 30px;
-  }
-}
-
-@media (max-width: 480px) {
-  .features-heading,
-  .testimonials-section .section-title {
-    font-size: 28px;
+    padding: 0 15px;
   }
   
   .hashtag-inline {
-    font-size: 18px;
+    font-size: 16px !important;
+  }
+  
+  .features-section,
+  .testimonials-section {
+    padding: 50px 15px;
+  }
+  
+  .feature-card,
+  .testimonial-card {
+    padding: 28px 20px;
+  }
+  
+  .feature-card h3 {
+    font-size: 16px;
+  }
+  
+  .feature-card p {
+    font-size: 13px;
+  }
+  
+  .testimonial-text {
+    font-size: 14px;
+  }
+  
+  .author-name {
+    font-size: 15px;
+  }
+  
+  .author-uni {
+    font-size: 13px;
+  }
+}
+
+/* Extra extra small (max-width: 374px) */
+@media (max-width: 374px) {
+  .section-title,
+  .features-heading,
+  .testimonials-section .section-title {
+    font-size: 24px;
+  }
+  
+  .hashtag-inline {
+    font-size: 14px !important;
   }
   
   .frames-content {
-    gap: 20px;
+    gap: 25px;
   }
+}
+
+/* Ensure responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Box sizing for all elements */
+* {
+  box-sizing: border-box;
 }
