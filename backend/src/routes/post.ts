@@ -1,8 +1,13 @@
 import { Router } from "express";
-import { createPost } from "../controllers/postController";
-import { authMiddleware } from "../middleware/auth";
-import { createPostSchema } from "../validators/postSchema";
+import { createPost, updatePost } from "../controllers/postController";
+import { authMiddleware } from "../middleware/authMiddleware";
 
 const router = Router();
-router.post("/", authMiddleware, createPost);
+
+// CREATE POST
+router.post("/create", authMiddleware, createPost);
+
+// UPDATE POST
+router.put("/update/:postId", authMiddleware, updatePost);
+
 export default router;
