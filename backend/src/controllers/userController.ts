@@ -40,3 +40,44 @@ export const deleteProfile = async (req: Request & { userId?: string }, res: Res
     return res.status(500).json({ message: 'Server error' });
   }
 };
+
+export const blockUser = async (req: Request & { userId?: string }, res: Response) => {
+  try {
+    const { userId: targetUserId } = req.params;
+    if (req.userId === targetUserId) {
+      return res.status(400).json({ message: 'Cannot block yourself' });
+    }
+    const user = await User.findById(req.userId);
+    const targetUser = await User.findById(targetUserId);
+    if (!user || !targetUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    if (user.blockedUsers.includes(targetUserId)) {
+      return res.status(400).json({ message: 'User already blocked' });
+    }
+    user.blockedUsers.push(targetUserId);
+    await user.save();
+    return res.json({ message: 'User blocked successfully' });
+  } catch {
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
+
+export const unblockUser = async (req: Request & { userId?: string }, res: Response) => {
+  try {
+    const { userId: targetUserId } = req.params;
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    const index = user.blockedUsers.indexOf(targetUserId);
+    if (index === -1) {
+      return res.status(400).json({ message: 'User not blocked' });
+    }
+    user.blockedUsers.splice(index, 1);
+    await user.save();
+    return res.json({ message: 'User unblocked successfully' });
+  } catch {
+    return res.status(500).json({ message: 'Server error' });
+  }
+};

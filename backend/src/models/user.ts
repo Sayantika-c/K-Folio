@@ -10,6 +10,7 @@ export interface IUser extends Document {
   isDeleted?: boolean;
   followerCount: number;
   followingCount: number;
+  blockedUsers: string[];
 }
 
 const UserSchema: Schema = new Schema<IUser>({
@@ -25,6 +26,7 @@ const UserSchema: Schema = new Schema<IUser>({
   isDeleted: { type: Boolean, default: false },
    followerCount: {type: Number, default: 0,},
     followingCount:{type: Number,default: 0,},
+    blockedUsers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 });
 
 export default mongoose.model<IUser>('User', UserSchema);
