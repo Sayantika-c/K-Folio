@@ -1,27 +1,44 @@
-import Background from "./pages/Landing/Background"
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import Background from "./pages/Landing/Background";
 import LandingPage from "./pages/Landing/LandingPage";
+import CreatePostModal from "./components/Create Post/createPost";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import "./App.css";
 
+import "./App.css";
 
 function App() {
+  const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
+
   return (
     <BrowserRouter>
-      <nav style={{ padding: 12 }}>
-        <Link to="/" style={{ marginRight: 12 }}>
-          Home
-        </Link>
+      {/* NAVBAR (unchanged, only button added) */}
+      <nav style={{ padding: 12, display: "flex", gap: 12 }}>
+        <Link to="/">Home</Link>
         <Link to="/signin">Sign In</Link>
+
+        {/* TEMP Create Post Button */}
+        <button
+          onClick={() => setIsCreatePostOpen(true)}
+          style={{ marginLeft: "auto" }}
+        >
+          Create Post
+        </button>
       </nav>
 
       <Routes>
-        {/* Landing Page */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Background />} />
         {/* Profile Page */}
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>
+
+      {/* MODAL (NEW, does NOT affect routes) */}
+      {isCreatePostOpen && (
+        <CreatePostModal onClose={() => setIsCreatePostOpen(false)} />
+      )}
     </BrowserRouter>
   );
 }
