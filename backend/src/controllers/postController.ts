@@ -32,6 +32,19 @@ export const createPost = async (req: Request & { userId?: string }, res: Respon
   }
 };
 
+export const getPosts = async (req: Request, res: Response) => {
+  try{
+    const posts = await Post.find().limit(20).sort({ createdAt: -1 });
+    return res.status(200).json({
+      success: true,
+      message: "Posts fetched successfully",
+      data: posts,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 export const updatePost = async (
   req: Request & { userId?: string },
   res: Response
