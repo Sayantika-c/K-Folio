@@ -2,6 +2,7 @@
 import Background from "./pages/Landing/Background"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import LandingPage from "./pages/Landing/LandingPage";
+import ProfilePage from "./pages/Profile/ProfilePage";
 import "./App.css";
 
 
@@ -19,6 +20,8 @@ function App() {
         {/* Landing Page */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Background />} />
+        {/* Profile Page */}
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );
